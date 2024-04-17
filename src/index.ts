@@ -4,6 +4,10 @@ import express, { Request, Response } from "express";
 const app = express();
 const port = process.env.PORT || 3000; // Define a porta do servidor
 
+app.get("/", (req: Request, res: Response) => {
+  res.json({ ok: true });
+});
+
 // Rota 1: Retorna um texto simples
 app.get("/user", (req: Request, res: Response) => {
   res.send("Olá, esta é a rota 1!");
