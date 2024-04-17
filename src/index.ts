@@ -4,6 +4,7 @@ import express, { Request, Response } from "express";
 const app = express();
 const port = process.env.PORT || 3000; // Define a porta do servidor
 
+// Rota home
 app.get("/", (req: Request, res: Response) => {
   res.json({ ok: true });
 });
