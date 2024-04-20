@@ -5,7 +5,7 @@ import AuthUserController from "./controllers/user/AuthUserController";
 
 const router = Router();
 
-router.post("/user", createUserController.handle);
-router.get("/session", AuthUserController.handle);
+router.post("/user", new createUserController().handle);
+router.post("/session", new AuthUserController().handle);
 
 export { router };

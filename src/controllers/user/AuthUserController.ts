@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import AuthUser from "../../models/user/AuthUserService";
+import User from "../../models/user/createUserService";
 import { compare } from "bcrypt";
 
 class AuthUserController {
@@ -8,7 +8,7 @@ class AuthUserController {
       const { email, password } = req.body;
       console.log("Dados recebidos: ", email, password);
 
-      const user = await AuthUser.findOne({ email }).exec();
+      const user = await User.findOne({ email }).exec();
       console.log("User encontrado no banco de dados: ", user);
 
       if (!user) {
@@ -20,7 +20,9 @@ class AuthUserController {
       console.log("Senha correta:", passwordMatch);
 
       if (!passwordMatch) {
-        return res.status(401).json({ message: "E-mail ou senha incorretos" });
+        return res
+          .status(401)
+          .json({ message: "Erro ao descriptografar senha" });
       }
 
       return res.status(200).json({ message: "Autenticação bem-sucedida" });
@@ -31,4 +33,4 @@ class AuthUserController {
   }
 }
 
-export default new AuthUserController();
+export default AuthUserController;
