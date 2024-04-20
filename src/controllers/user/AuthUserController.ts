@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import UserAuth from "../../models/user/AuthUserService";
+import AuthUser from "../../models/user/AuthUserService";
 import { compare } from "bcrypt";
 
 class AuthUserController {
@@ -8,7 +8,7 @@ class AuthUserController {
       const { email, password } = req.body;
       console.log("Dados recebidos: ", email, password);
 
-      const user = await UserAuth.findOne({ email });
+      const user = await AuthUser.findOne({ email }).exec();
       console.log("User encontrado no banco de dados: ", user);
 
       if (!user) {

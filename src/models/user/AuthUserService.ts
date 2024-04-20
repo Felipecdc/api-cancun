@@ -10,4 +10,4 @@ const AuthUserSchema = new Schema<AuthUserProps>({
   password: { type: String, required: true },
 });
 
-export default model<AuthUserProps>("UserAuth", AuthUserSchema);
+export default model<AuthUserProps>("AuthUser", AuthUserSchema);
