@@ -3,9 +3,8 @@ import Client from "../../models/clients/createClientsService";
 import twilio from "twilio";
 import schedule from "node-schedule";
 
-const accountSid = "AC8de96a3727e8acca4c36b922598cd7f9";
-const authToken = "MLMY6RPMYPXZPFTVQME3BDLS";
-const twilioPhoneNumber = "14155238886";
+const accountSid = process.env.ACCOUNT_SID;
+const authToken = process.env.AUTH_TOKEN;
 const twilioClient = twilio(accountSid, authToken);
 
 class CreateAutomationController {
