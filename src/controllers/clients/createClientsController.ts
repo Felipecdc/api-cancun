@@ -4,7 +4,7 @@ import Client from "../../models/clients/createClientsService";
 class CreateClientController {
   async handle(req: Request, res: Response) {
     try {
-      const { name, email, address, phoneNumber } = req.body;
+      const { name, email, phoneNumber } = req.body;
 
       const existentUser = await Client.findOne({ email });
       if (existentUser) {
@@ -14,11 +14,11 @@ class CreateClientController {
       const newUser = await Client.create({
         name,
         email,
-        address,
         phoneNumber,
         dates: [new Date()],
-        lastReminderSent: new Date(),
+        lastReminderSent: new Date("00/00/0000"),
         createdAt: new Date(),
+        lastCutie: new Date(),
       });
 
       res.status(200).json(newUser);
