@@ -16,7 +16,7 @@ class CreateClientController {
         email,
         phoneNumber,
         dates: [new Date()],
-        lastReminderSent: new Date("00/00/0000"),
+        lastReminderSent: new Date(),
         createdAt: new Date(),
         lastCutie: new Date(),
       });
