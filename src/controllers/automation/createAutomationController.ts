@@ -3,10 +3,6 @@ import Client from "../../models/clients/createClientsService";
 import twilio from "twilio";
 import schedule from "node-schedule";
 
-const accountSid = process.env.ACCOUNT_SID;
-const authToken = process.env.AUTH_TOKEN;
-const twilioClient = twilio(accountSid, authToken);
-
 class CreateAutomationController {
   async handle(req: Request, res: Response) {
     try {
