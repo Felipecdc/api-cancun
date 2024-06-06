@@ -4,9 +4,10 @@ import createUserController from "./controllers/user/createUserController";
 import AuthUserController from "./controllers/user/AuthUserController";
 
 import CreateClientController from "./controllers/clients/createClientsController";
+import UpdateClientController from "./controllers/clients/updateClientsController";
+import GetClientsController from "./controllers/clients/getClientsController";
 
 import CreateAutomationController from "./controllers/automation/createAutomationController";
-import UpdateClientController from "./controllers/clients/updateClientsController";
 
 const router = Router();
 
@@ -15,6 +16,7 @@ router.post("/user", new createUserController().handle);
 router.get("/session", new AuthUserController().handle);
 
 // Create Client Users
+router.get("/client", new GetClientsController().handle);
 router.post("/client", new CreateClientController().handle);
 router.patch("/client/:id", new UpdateClientController().handle);
 
