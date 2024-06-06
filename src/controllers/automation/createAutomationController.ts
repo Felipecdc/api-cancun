@@ -103,6 +103,8 @@ class CreateAutomationController {
             console.log({
               Message: "--- Algum problema com datas ---",
               userId: id,
+              envio: nextNotified,
+              minDate: minDateDiff,
             });
           }
         }
