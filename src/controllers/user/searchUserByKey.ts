@@ -4,8 +4,8 @@ import User from "../../models/user/createUserService";
 class SearchUserByKey {
   async handle(req: Request, res: Response) {
     try {
-      const { id } = req.params;
-      const user = await User.findById(id);
+      const { key } = req.body;
+      const user = await User.findOne({ key: key });
 
       if (!user) {
         return res.status(404).json({ message: "Cliente não encontrado" });
