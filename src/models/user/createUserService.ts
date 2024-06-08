@@ -11,7 +11,7 @@ const createUserSchema = new Schema<UserProps>({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  key: { type: String, required: true },
+  key: { type: String, required: true, unique: true },
 });
 
 export default model<UserProps>("User", createUserSchema);
