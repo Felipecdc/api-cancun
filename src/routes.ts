@@ -15,7 +15,7 @@ const router = Router();
 // Create Owner Users
 router.post("/user", new createUserController().handle);
 router.get("/session", new AuthUserController().handle);
-router.get("/user/:id", new SearchUserByKey().handle);
+router.get("/user", new SearchUserByKey().handle);
 
 // Create Client Users
 router.get("/client", new GetClientsController().handle);
