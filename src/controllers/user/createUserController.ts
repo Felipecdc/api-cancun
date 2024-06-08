@@ -14,10 +14,16 @@ class CreateUserController {
         return res.status(400).json({ message: "E-mail já está em uso" });
       }
 
+      let key;
+      const randomNumber = Math.floor(Math.random() * 1000000);
+      const paddeNUmber = randomNumber.toString().padStart(6, "0");
+      key = paddeNUmber;
+
       const newUser = await User.create({
         name,
         email,
         password: hashedPassword,
+        key: key,
       });
 
       res.status(200).json(newUser);
