@@ -8,14 +8,12 @@ import UpdateClientController from "./controllers/clients/updateClientsControlle
 import GetClientsController from "./controllers/clients/getClientsController";
 
 import CreateAutomationController from "./controllers/automation/createAutomationController";
-import SearchUserByKey from "./controllers/user/searchUserByKey";
 
 const router = Router();
 
 // Create Owner Users
 router.post("/user", new createUserController().handle);
 router.get("/session", new AuthUserController().handle);
-router.post("/key", new SearchUserByKey().handle);
 
 // Create Client Users
 router.get("/client", new GetClientsController().handle);

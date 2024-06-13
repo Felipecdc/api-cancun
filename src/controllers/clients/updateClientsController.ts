@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Client from "../../models/clients/createClientsService";
+import User from "../../models/user/createUserService";
 
 interface UpdateClientProps {
   dates?: Date[];
@@ -10,8 +11,19 @@ class UpdateClientController {
   async handle(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const clientrequest = await Client.findById(id);
+      const { key } = req.body;
 
+      const user = await User.findOne({ key: key });
+      if (!user) {
+        return res
+          .status(404)
+          .json({ message: "Chave de usuário não encontrada" });
+      }
+
+      const clientrequest = await Client.findById(id);
+      if (!clientrequest) {
+        return res.status(404).json({ message: "Cliente não encontrado" });
+      }
       const dates = clientrequest?.dates;
       const lastCutie = clientrequest?.lastCutie;
       const currentDate = new Date();
